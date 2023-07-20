@@ -35,12 +35,14 @@ export default function ImgUpLoad() {
     const thumbnailList = imgList.map((img) => URL.createObjectURL(img));
     setShowImage(imgList);
     setThumbnail(thumbnailList);
-
+    console.log(e.target.files);
+    console.log(e.target.value);
     e.target.value = "";
   };
 
   const handleDeleteImg = (id: number) => {
     setThumbnail(thumbnail.filter((_, index) => index !== id));
+    setShowImage(showImage.filter((_, index) => index !== id));
   };
 
   return (
@@ -72,7 +74,7 @@ export default function ImgUpLoad() {
         </label>
         {thumbnail?.map((image, id) => (
           <div
-            className="w-16 h-16 ml-2 border rounded-lg relative  overflow-hidden"
+            className="w-16 h-16 ml-1 border rounded-lg relative  overflow-hidden"
             key={id}
           >
             <img src={image} alt={`${image} - ${id}`} className="" />
